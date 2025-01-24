@@ -16,7 +16,11 @@ import io.fabric8.openshift.api.model.config.v1.DNSStatus as v1_DNSStatus
 import io.fabric8.openshift.api.model.config.v1.FeatureGate as v1_FeatureGate
 import io.fabric8.openshift.api.model.config.v1.FeatureGateStatus as v1_FeatureGateStatus
 import io.fabric8.openshift.api.model.config.v1.Image as v1_Image
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSet as v1_ImageDigestMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetStatus as v1_ImageDigestMirrorSetStatus
 import io.fabric8.openshift.api.model.config.v1.ImageStatus as v1_ImageStatus
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSet as v1_ImageTagMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetStatus as v1_ImageTagMirrorSetStatus
 import io.fabric8.openshift.api.model.config.v1.Infrastructure as v1_Infrastructure
 import io.fabric8.openshift.api.model.config.v1.InfrastructureStatus as v1_InfrastructureStatus
 import io.fabric8.openshift.api.model.config.v1.Ingress as v1_Ingress
@@ -101,6 +105,24 @@ fun  v1_FeatureGate.`status`(block: v1_FeatureGateStatus.() -> Unit = {}) {
 fun  v1_Image.`status`(block: v1_ImageStatus.() -> Unit = {}) {
   if(this.`status` == null) {
     this.`status` = v1_ImageStatus()
+  }
+
+  this.`status`.block()
+}
+
+
+fun  v1_ImageDigestMirrorSet.`status`(block: v1_ImageDigestMirrorSetStatus.() -> Unit = {}) {
+  if(this.`status` == null) {
+    this.`status` = v1_ImageDigestMirrorSetStatus()
+  }
+
+  this.`status`.block()
+}
+
+
+fun  v1_ImageTagMirrorSet.`status`(block: v1_ImageTagMirrorSetStatus.() -> Unit = {}) {
+  if(this.`status` == null) {
+    this.`status` = v1_ImageTagMirrorSetStatus()
   }
 
   this.`status`.block()

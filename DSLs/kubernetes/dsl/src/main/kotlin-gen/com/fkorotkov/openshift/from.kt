@@ -5,6 +5,7 @@ import io.fabric8.kubernetes.api.model.ObjectReference as model_ObjectReference
 import io.fabric8.openshift.api.model.BuildRequest as model_BuildRequest
 import io.fabric8.openshift.api.model.CustomBuildStrategy as model_CustomBuildStrategy
 import io.fabric8.openshift.api.model.DeploymentCauseImageTrigger as model_DeploymentCauseImageTrigger
+import io.fabric8.openshift.api.model.DeploymentConfigRollbackSpec as model_DeploymentConfigRollbackSpec
 import io.fabric8.openshift.api.model.DeploymentTriggerImageChangeParams as model_DeploymentTriggerImageChangeParams
 import io.fabric8.openshift.api.model.DockerBuildStrategy as model_DockerBuildStrategy
 import io.fabric8.openshift.api.model.ImageChangeTrigger as model_ImageChangeTrigger
@@ -36,6 +37,15 @@ fun  model_CustomBuildStrategy.`from`(block: model_ObjectReference.() -> Unit = 
 
 
 fun  model_DeploymentCauseImageTrigger.`from`(block: model_ObjectReference.() -> Unit = {}) {
+  if(this.`from` == null) {
+    this.`from` = model_ObjectReference()
+  }
+
+  this.`from`.block()
+}
+
+
+fun  model_DeploymentConfigRollbackSpec.`from`(block: model_ObjectReference.() -> Unit = {}) {
   if(this.`from` == null) {
     this.`from` = model_ObjectReference()
   }

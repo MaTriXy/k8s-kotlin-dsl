@@ -2,10 +2,20 @@
 package com.fkorotkov.openshift
 
 import io.fabric8.openshift.api.model.ConnectionConfig as model_ConnectionConfig
+import io.fabric8.openshift.api.model.ConnectionConfigNamespaceScoped as model_ConnectionConfigNamespaceScoped
 import io.fabric8.openshift.api.model.config.v1.SecretNameReference as v1_SecretNameReference
 
 
 fun  model_ConnectionConfig.`tlsClientConfig`(block: v1_SecretNameReference.() -> Unit = {}) {
+  if(this.`tlsClientConfig` == null) {
+    this.`tlsClientConfig` = v1_SecretNameReference()
+  }
+
+  this.`tlsClientConfig`.block()
+}
+
+
+fun  model_ConnectionConfigNamespaceScoped.`tlsClientConfig`(block: v1_SecretNameReference.() -> Unit = {}) {
   if(this.`tlsClientConfig` == null) {
     this.`tlsClientConfig` = v1_SecretNameReference()
   }

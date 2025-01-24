@@ -22,7 +22,11 @@ import io.fabric8.openshift.api.model.config.v1.FeatureGateList as v1_FeatureGat
 import io.fabric8.openshift.api.model.config.v1.Image as v1_Image
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicy as v1_ImageContentPolicy
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicyList as v1_ImageContentPolicyList
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSet as v1_ImageDigestMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetList as v1_ImageDigestMirrorSetList
 import io.fabric8.openshift.api.model.config.v1.ImageList as v1_ImageList
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSet as v1_ImageTagMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetList as v1_ImageTagMirrorSetList
 import io.fabric8.openshift.api.model.config.v1.Infrastructure as v1_Infrastructure
 import io.fabric8.openshift.api.model.config.v1.InfrastructureList as v1_InfrastructureList
 import io.fabric8.openshift.api.model.config.v1.Ingress as v1_Ingress
@@ -212,7 +216,43 @@ fun  v1_ImageContentPolicyList.`metadata`(block: model_ListMeta.() -> Unit = {})
 }
 
 
+fun  v1_ImageDigestMirrorSet.`metadata`(block: model_ObjectMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ObjectMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
+fun  v1_ImageDigestMirrorSetList.`metadata`(block: model_ListMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ListMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
 fun  v1_ImageList.`metadata`(block: model_ListMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ListMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
+fun  v1_ImageTagMirrorSet.`metadata`(block: model_ObjectMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ObjectMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
+fun  v1_ImageTagMirrorSetList.`metadata`(block: model_ListMeta.() -> Unit = {}) {
   if(this.`metadata` == null) {
     this.`metadata` = model_ListMeta()
   }

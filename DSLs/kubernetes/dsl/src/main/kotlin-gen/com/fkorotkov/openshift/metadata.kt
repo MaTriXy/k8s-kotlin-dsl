@@ -55,6 +55,8 @@ import io.fabric8.openshift.api.model.OAuthClientAuthorization as model_OAuthCli
 import io.fabric8.openshift.api.model.OAuthClientAuthorizationList as model_OAuthClientAuthorizationList
 import io.fabric8.openshift.api.model.OAuthClientList as model_OAuthClientList
 import io.fabric8.openshift.api.model.Project as model_Project
+import io.fabric8.openshift.api.model.ProjectHelmChartRepository as model_ProjectHelmChartRepository
+import io.fabric8.openshift.api.model.ProjectHelmChartRepositoryList as model_ProjectHelmChartRepositoryList
 import io.fabric8.openshift.api.model.ProjectList as model_ProjectList
 import io.fabric8.openshift.api.model.ProjectRequest as model_ProjectRequest
 import io.fabric8.openshift.api.model.RangeAllocation as model_RangeAllocation
@@ -542,6 +544,24 @@ fun  model_OAuthClientList.`metadata`(block: model_ListMeta.() -> Unit = {}) {
 fun  model_Project.`metadata`(block: model_ObjectMeta.() -> Unit = {}) {
   if(this.`metadata` == null) {
     this.`metadata` = model_ObjectMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
+fun  model_ProjectHelmChartRepository.`metadata`(block: model_ObjectMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ObjectMeta()
+  }
+
+  this.`metadata`.block()
+}
+
+
+fun  model_ProjectHelmChartRepositoryList.`metadata`(block: model_ListMeta.() -> Unit = {}) {
+  if(this.`metadata` == null) {
+    this.`metadata` = model_ListMeta()
   }
 
   this.`metadata`.block()

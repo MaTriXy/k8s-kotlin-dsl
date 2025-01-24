@@ -8,6 +8,8 @@ import io.fabric8.openshift.api.model.config.v1.APIServerNamedServingCert as v1_
 import io.fabric8.openshift.api.model.config.v1.APIServerServingCerts as v1_APIServerServingCerts
 import io.fabric8.openshift.api.model.config.v1.APIServerSpec as v1_APIServerSpec
 import io.fabric8.openshift.api.model.config.v1.APIServerStatus as v1_APIServerStatus
+import io.fabric8.openshift.api.model.config.v1.AWSDNSSpec as v1_AWSDNSSpec
+import io.fabric8.openshift.api.model.config.v1.AWSIngressSpec as v1_AWSIngressSpec
 import io.fabric8.openshift.api.model.config.v1.AWSPlatformSpec as v1_AWSPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.AWSPlatformStatus as v1_AWSPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.AWSResourceTag as v1_AWSResourceTag
@@ -23,6 +25,8 @@ import io.fabric8.openshift.api.model.config.v1.AuthenticationSpec as v1_Authent
 import io.fabric8.openshift.api.model.config.v1.AuthenticationStatus as v1_AuthenticationStatus
 import io.fabric8.openshift.api.model.config.v1.AzurePlatformSpec as v1_AzurePlatformSpec
 import io.fabric8.openshift.api.model.config.v1.AzurePlatformStatus as v1_AzurePlatformStatus
+import io.fabric8.openshift.api.model.config.v1.AzureResourceTag as v1_AzureResourceTag
+import io.fabric8.openshift.api.model.config.v1.BareMetalPlatformLoadBalancer as v1_BareMetalPlatformLoadBalancer
 import io.fabric8.openshift.api.model.config.v1.BareMetalPlatformSpec as v1_BareMetalPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.BareMetalPlatformStatus as v1_BareMetalPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.BasicAuthIdentityProvider as v1_BasicAuthIdentityProvider
@@ -31,6 +35,7 @@ import io.fabric8.openshift.api.model.config.v1.BuildDefaults as v1_BuildDefault
 import io.fabric8.openshift.api.model.config.v1.BuildList as v1_BuildList
 import io.fabric8.openshift.api.model.config.v1.BuildOverrides as v1_BuildOverrides
 import io.fabric8.openshift.api.model.config.v1.BuildSpec as v1_BuildSpec
+import io.fabric8.openshift.api.model.config.v1.CloudControllerManagerStatus as v1_CloudControllerManagerStatus
 import io.fabric8.openshift.api.model.config.v1.ClusterCondition as v1_ClusterCondition
 import io.fabric8.openshift.api.model.config.v1.ClusterNetworkEntry as v1_ClusterNetworkEntry
 import io.fabric8.openshift.api.model.config.v1.ClusterOperator as v1_ClusterOperator
@@ -39,6 +44,8 @@ import io.fabric8.openshift.api.model.config.v1.ClusterOperatorSpec as v1_Cluste
 import io.fabric8.openshift.api.model.config.v1.ClusterOperatorStatus as v1_ClusterOperatorStatus
 import io.fabric8.openshift.api.model.config.v1.ClusterOperatorStatusCondition as v1_ClusterOperatorStatusCondition
 import io.fabric8.openshift.api.model.config.v1.ClusterVersion as v1_ClusterVersion
+import io.fabric8.openshift.api.model.config.v1.ClusterVersionCapabilitiesSpec as v1_ClusterVersionCapabilitiesSpec
+import io.fabric8.openshift.api.model.config.v1.ClusterVersionCapabilitiesStatus as v1_ClusterVersionCapabilitiesStatus
 import io.fabric8.openshift.api.model.config.v1.ClusterVersionList as v1_ClusterVersionList
 import io.fabric8.openshift.api.model.config.v1.ClusterVersionSpec as v1_ClusterVersionSpec
 import io.fabric8.openshift.api.model.config.v1.ClusterVersionStatus as v1_ClusterVersionStatus
@@ -58,6 +65,7 @@ import io.fabric8.openshift.api.model.config.v1.CustomFeatureGates as v1_CustomF
 import io.fabric8.openshift.api.model.config.v1.CustomTLSProfile as v1_CustomTLSProfile
 import io.fabric8.openshift.api.model.config.v1.DNS as v1_DNS
 import io.fabric8.openshift.api.model.config.v1.DNSList as v1_DNSList
+import io.fabric8.openshift.api.model.config.v1.DNSPlatformSpec as v1_DNSPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.DNSSpec as v1_DNSSpec
 import io.fabric8.openshift.api.model.config.v1.DNSStatus as v1_DNSStatus
 import io.fabric8.openshift.api.model.config.v1.DNSZone as v1_DNSZone
@@ -66,7 +74,11 @@ import io.fabric8.openshift.api.model.config.v1.EquinixMetalPlatformSpec as v1_E
 import io.fabric8.openshift.api.model.config.v1.EquinixMetalPlatformStatus as v1_EquinixMetalPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.ExternalIPConfig as v1_ExternalIPConfig
 import io.fabric8.openshift.api.model.config.v1.ExternalIPPolicy as v1_ExternalIPPolicy
+import io.fabric8.openshift.api.model.config.v1.ExternalPlatformSpec as v1_ExternalPlatformSpec
+import io.fabric8.openshift.api.model.config.v1.ExternalPlatformStatus as v1_ExternalPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.FeatureGate as v1_FeatureGate
+import io.fabric8.openshift.api.model.config.v1.FeatureGateAttributes as v1_FeatureGateAttributes
+import io.fabric8.openshift.api.model.config.v1.FeatureGateDetails as v1_FeatureGateDetails
 import io.fabric8.openshift.api.model.config.v1.FeatureGateList as v1_FeatureGateList
 import io.fabric8.openshift.api.model.config.v1.FeatureGateSpec as v1_FeatureGateSpec
 import io.fabric8.openshift.api.model.config.v1.FeatureGateStatus as v1_FeatureGateStatus
@@ -85,16 +97,27 @@ import io.fabric8.openshift.api.model.config.v1.Image as v1_Image
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicy as v1_ImageContentPolicy
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicyList as v1_ImageContentPolicyList
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicySpec as v1_ImageContentPolicySpec
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSet as v1_ImageDigestMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetList as v1_ImageDigestMirrorSetList
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetSpec as v1_ImageDigestMirrorSetSpec
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetStatus as v1_ImageDigestMirrorSetStatus
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrors as v1_ImageDigestMirrors
 import io.fabric8.openshift.api.model.config.v1.ImageLabel as v1_ImageLabel
 import io.fabric8.openshift.api.model.config.v1.ImageList as v1_ImageList
 import io.fabric8.openshift.api.model.config.v1.ImageSpec as v1_ImageSpec
 import io.fabric8.openshift.api.model.config.v1.ImageStatus as v1_ImageStatus
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSet as v1_ImageTagMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetList as v1_ImageTagMirrorSetList
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetSpec as v1_ImageTagMirrorSetSpec
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetStatus as v1_ImageTagMirrorSetStatus
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrors as v1_ImageTagMirrors
 import io.fabric8.openshift.api.model.config.v1.Infrastructure as v1_Infrastructure
 import io.fabric8.openshift.api.model.config.v1.InfrastructureList as v1_InfrastructureList
 import io.fabric8.openshift.api.model.config.v1.InfrastructureSpec as v1_InfrastructureSpec
 import io.fabric8.openshift.api.model.config.v1.InfrastructureStatus as v1_InfrastructureStatus
 import io.fabric8.openshift.api.model.config.v1.Ingress as v1_Ingress
 import io.fabric8.openshift.api.model.config.v1.IngressList as v1_IngressList
+import io.fabric8.openshift.api.model.config.v1.IngressPlatformSpec as v1_IngressPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.IngressSpec as v1_IngressSpec
 import io.fabric8.openshift.api.model.config.v1.IngressStatus as v1_IngressStatus
 import io.fabric8.openshift.api.model.config.v1.IntermediateTLSProfile as v1_IntermediateTLSProfile
@@ -103,6 +126,9 @@ import io.fabric8.openshift.api.model.config.v1.KubevirtPlatformSpec as v1_Kubev
 import io.fabric8.openshift.api.model.config.v1.KubevirtPlatformStatus as v1_KubevirtPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.LDAPAttributeMapping as v1_LDAPAttributeMapping
 import io.fabric8.openshift.api.model.config.v1.LDAPIdentityProvider as v1_LDAPIdentityProvider
+import io.fabric8.openshift.api.model.config.v1.LoadBalancer as v1_LoadBalancer
+import io.fabric8.openshift.api.model.config.v1.MTUMigration as v1_MTUMigration
+import io.fabric8.openshift.api.model.config.v1.MTUMigrationValues as v1_MTUMigrationValues
 import io.fabric8.openshift.api.model.config.v1.MaxAgePolicy as v1_MaxAgePolicy
 import io.fabric8.openshift.api.model.config.v1.ModernTLSProfile as v1_ModernTLSProfile
 import io.fabric8.openshift.api.model.config.v1.Network as v1_Network
@@ -110,6 +136,11 @@ import io.fabric8.openshift.api.model.config.v1.NetworkList as v1_NetworkList
 import io.fabric8.openshift.api.model.config.v1.NetworkMigration as v1_NetworkMigration
 import io.fabric8.openshift.api.model.config.v1.NetworkSpec as v1_NetworkSpec
 import io.fabric8.openshift.api.model.config.v1.NetworkStatus as v1_NetworkStatus
+import io.fabric8.openshift.api.model.config.v1.NutanixPlatformLoadBalancer as v1_NutanixPlatformLoadBalancer
+import io.fabric8.openshift.api.model.config.v1.NutanixPlatformSpec as v1_NutanixPlatformSpec
+import io.fabric8.openshift.api.model.config.v1.NutanixPlatformStatus as v1_NutanixPlatformStatus
+import io.fabric8.openshift.api.model.config.v1.NutanixPrismElementEndpoint as v1_NutanixPrismElementEndpoint
+import io.fabric8.openshift.api.model.config.v1.NutanixPrismEndpoint as v1_NutanixPrismEndpoint
 import io.fabric8.openshift.api.model.config.v1.OAuth as v1_OAuth
 import io.fabric8.openshift.api.model.config.v1.OAuthList as v1_OAuthList
 import io.fabric8.openshift.api.model.config.v1.OAuthSpec as v1_OAuthSpec
@@ -119,6 +150,7 @@ import io.fabric8.openshift.api.model.config.v1.ObjectReference as v1_ObjectRefe
 import io.fabric8.openshift.api.model.config.v1.OldTLSProfile as v1_OldTLSProfile
 import io.fabric8.openshift.api.model.config.v1.OpenIDClaims as v1_OpenIDClaims
 import io.fabric8.openshift.api.model.config.v1.OpenIDIdentityProvider as v1_OpenIDIdentityProvider
+import io.fabric8.openshift.api.model.config.v1.OpenStackPlatformLoadBalancer as v1_OpenStackPlatformLoadBalancer
 import io.fabric8.openshift.api.model.config.v1.OpenStackPlatformSpec as v1_OpenStackPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.OpenStackPlatformStatus as v1_OpenStackPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.OperandVersion as v1_OperandVersion
@@ -126,6 +158,7 @@ import io.fabric8.openshift.api.model.config.v1.OperatorHub as v1_OperatorHub
 import io.fabric8.openshift.api.model.config.v1.OperatorHubList as v1_OperatorHubList
 import io.fabric8.openshift.api.model.config.v1.OperatorHubSpec as v1_OperatorHubSpec
 import io.fabric8.openshift.api.model.config.v1.OperatorHubStatus as v1_OperatorHubStatus
+import io.fabric8.openshift.api.model.config.v1.OvirtPlatformLoadBalancer as v1_OvirtPlatformLoadBalancer
 import io.fabric8.openshift.api.model.config.v1.OvirtPlatformSpec as v1_OvirtPlatformSpec
 import io.fabric8.openshift.api.model.config.v1.OvirtPlatformStatus as v1_OvirtPlatformStatus
 import io.fabric8.openshift.api.model.config.v1.PlatformSpec as v1_PlatformSpec
@@ -159,8 +192,14 @@ import io.fabric8.openshift.api.model.config.v1.TemplateReference as v1_Template
 import io.fabric8.openshift.api.model.config.v1.TokenConfig as v1_TokenConfig
 import io.fabric8.openshift.api.model.config.v1.Update as v1_Update
 import io.fabric8.openshift.api.model.config.v1.UpdateHistory as v1_UpdateHistory
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformFailureDomainSpec as v1_VSpherePlatformFailureDomainSpec
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformLoadBalancer as v1_VSpherePlatformLoadBalancer
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformNodeNetworking as v1_VSpherePlatformNodeNetworking
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformNodeNetworkingSpec as v1_VSpherePlatformNodeNetworkingSpec
 import io.fabric8.openshift.api.model.config.v1.VSpherePlatformSpec as v1_VSpherePlatformSpec
 import io.fabric8.openshift.api.model.config.v1.VSpherePlatformStatus as v1_VSpherePlatformStatus
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformTopology as v1_VSpherePlatformTopology
+import io.fabric8.openshift.api.model.config.v1.VSpherePlatformVCenterSpec as v1_VSpherePlatformVCenterSpec
 import io.fabric8.openshift.api.model.config.v1.WebhookTokenAuthenticator as v1_WebhookTokenAuthenticator
 
 
@@ -208,6 +247,20 @@ fun newAPIServerSpec(block : v1_APIServerSpec.() -> Unit = {}): v1_APIServerSpec
 
 fun newAPIServerStatus(block : v1_APIServerStatus.() -> Unit = {}): v1_APIServerStatus {
   val instance = v1_APIServerStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newAWSDNSSpec(block : v1_AWSDNSSpec.() -> Unit = {}): v1_AWSDNSSpec {
+  val instance = v1_AWSDNSSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newAWSIngressSpec(block : v1_AWSIngressSpec.() -> Unit = {}): v1_AWSIngressSpec {
+  val instance = v1_AWSIngressSpec()
   instance.block()
   return instance
 }
@@ -318,6 +371,20 @@ fun newAzurePlatformStatus(block : v1_AzurePlatformStatus.() -> Unit = {}): v1_A
 }
 
 
+fun newAzureResourceTag(block : v1_AzureResourceTag.() -> Unit = {}): v1_AzureResourceTag {
+  val instance = v1_AzureResourceTag()
+  instance.block()
+  return instance
+}
+
+
+fun newBareMetalPlatformLoadBalancer(block : v1_BareMetalPlatformLoadBalancer.() -> Unit = {}): v1_BareMetalPlatformLoadBalancer {
+  val instance = v1_BareMetalPlatformLoadBalancer()
+  instance.block()
+  return instance
+}
+
+
 fun newBareMetalPlatformSpec(block : v1_BareMetalPlatformSpec.() -> Unit = {}): v1_BareMetalPlatformSpec {
   val instance = v1_BareMetalPlatformSpec()
   instance.block()
@@ -374,6 +441,13 @@ fun newBuildSpec(block : v1_BuildSpec.() -> Unit = {}): v1_BuildSpec {
 }
 
 
+fun newCloudControllerManagerStatus(block : v1_CloudControllerManagerStatus.() -> Unit = {}): v1_CloudControllerManagerStatus {
+  val instance = v1_CloudControllerManagerStatus()
+  instance.block()
+  return instance
+}
+
+
 fun newClusterCondition(block : v1_ClusterCondition.() -> Unit = {}): v1_ClusterCondition {
   val instance = v1_ClusterCondition()
   instance.block()
@@ -425,6 +499,20 @@ fun newClusterOperatorStatusCondition(block : v1_ClusterOperatorStatusCondition.
 
 fun newClusterVersion(block : v1_ClusterVersion.() -> Unit = {}): v1_ClusterVersion {
   val instance = v1_ClusterVersion()
+  instance.block()
+  return instance
+}
+
+
+fun newClusterVersionCapabilitiesSpec(block : v1_ClusterVersionCapabilitiesSpec.() -> Unit = {}): v1_ClusterVersionCapabilitiesSpec {
+  val instance = v1_ClusterVersionCapabilitiesSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newClusterVersionCapabilitiesStatus(block : v1_ClusterVersionCapabilitiesStatus.() -> Unit = {}): v1_ClusterVersionCapabilitiesStatus {
+  val instance = v1_ClusterVersionCapabilitiesStatus()
   instance.block()
   return instance
 }
@@ -563,6 +651,13 @@ fun newDNSList(block : v1_DNSList.() -> Unit = {}): v1_DNSList {
 }
 
 
+fun newDNSPlatformSpec(block : v1_DNSPlatformSpec.() -> Unit = {}): v1_DNSPlatformSpec {
+  val instance = v1_DNSPlatformSpec()
+  instance.block()
+  return instance
+}
+
+
 fun newDNSSpec(block : v1_DNSSpec.() -> Unit = {}): v1_DNSSpec {
   val instance = v1_DNSSpec()
   instance.block()
@@ -619,8 +714,36 @@ fun newExternalIPPolicy(block : v1_ExternalIPPolicy.() -> Unit = {}): v1_Externa
 }
 
 
+fun newExternalPlatformSpec(block : v1_ExternalPlatformSpec.() -> Unit = {}): v1_ExternalPlatformSpec {
+  val instance = v1_ExternalPlatformSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newExternalPlatformStatus(block : v1_ExternalPlatformStatus.() -> Unit = {}): v1_ExternalPlatformStatus {
+  val instance = v1_ExternalPlatformStatus()
+  instance.block()
+  return instance
+}
+
+
 fun newFeatureGate(block : v1_FeatureGate.() -> Unit = {}): v1_FeatureGate {
   val instance = v1_FeatureGate()
+  instance.block()
+  return instance
+}
+
+
+fun newFeatureGateAttributes(block : v1_FeatureGateAttributes.() -> Unit = {}): v1_FeatureGateAttributes {
+  val instance = v1_FeatureGateAttributes()
+  instance.block()
+  return instance
+}
+
+
+fun newFeatureGateDetails(block : v1_FeatureGateDetails.() -> Unit = {}): v1_FeatureGateDetails {
+  val instance = v1_FeatureGateDetails()
   instance.block()
   return instance
 }
@@ -752,6 +875,41 @@ fun newImageContentPolicySpec(block : v1_ImageContentPolicySpec.() -> Unit = {})
 }
 
 
+fun newImageDigestMirrorSet(block : v1_ImageDigestMirrorSet.() -> Unit = {}): v1_ImageDigestMirrorSet {
+  val instance = v1_ImageDigestMirrorSet()
+  instance.block()
+  return instance
+}
+
+
+fun newImageDigestMirrorSetList(block : v1_ImageDigestMirrorSetList.() -> Unit = {}): v1_ImageDigestMirrorSetList {
+  val instance = v1_ImageDigestMirrorSetList()
+  instance.block()
+  return instance
+}
+
+
+fun newImageDigestMirrorSetSpec(block : v1_ImageDigestMirrorSetSpec.() -> Unit = {}): v1_ImageDigestMirrorSetSpec {
+  val instance = v1_ImageDigestMirrorSetSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newImageDigestMirrorSetStatus(block : v1_ImageDigestMirrorSetStatus.() -> Unit = {}): v1_ImageDigestMirrorSetStatus {
+  val instance = v1_ImageDigestMirrorSetStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newImageDigestMirrors(block : v1_ImageDigestMirrors.() -> Unit = {}): v1_ImageDigestMirrors {
+  val instance = v1_ImageDigestMirrors()
+  instance.block()
+  return instance
+}
+
+
 fun newImageLabel(block : v1_ImageLabel.() -> Unit = {}): v1_ImageLabel {
   val instance = v1_ImageLabel()
   instance.block()
@@ -775,6 +933,41 @@ fun newImageSpec(block : v1_ImageSpec.() -> Unit = {}): v1_ImageSpec {
 
 fun newImageStatus(block : v1_ImageStatus.() -> Unit = {}): v1_ImageStatus {
   val instance = v1_ImageStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newImageTagMirrorSet(block : v1_ImageTagMirrorSet.() -> Unit = {}): v1_ImageTagMirrorSet {
+  val instance = v1_ImageTagMirrorSet()
+  instance.block()
+  return instance
+}
+
+
+fun newImageTagMirrorSetList(block : v1_ImageTagMirrorSetList.() -> Unit = {}): v1_ImageTagMirrorSetList {
+  val instance = v1_ImageTagMirrorSetList()
+  instance.block()
+  return instance
+}
+
+
+fun newImageTagMirrorSetSpec(block : v1_ImageTagMirrorSetSpec.() -> Unit = {}): v1_ImageTagMirrorSetSpec {
+  val instance = v1_ImageTagMirrorSetSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newImageTagMirrorSetStatus(block : v1_ImageTagMirrorSetStatus.() -> Unit = {}): v1_ImageTagMirrorSetStatus {
+  val instance = v1_ImageTagMirrorSetStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newImageTagMirrors(block : v1_ImageTagMirrors.() -> Unit = {}): v1_ImageTagMirrors {
+  val instance = v1_ImageTagMirrors()
   instance.block()
   return instance
 }
@@ -817,6 +1010,13 @@ fun newIngress(block : v1_Ingress.() -> Unit = {}): v1_Ingress {
 
 fun newIngressList(block : v1_IngressList.() -> Unit = {}): v1_IngressList {
   val instance = v1_IngressList()
+  instance.block()
+  return instance
+}
+
+
+fun newIngressPlatformSpec(block : v1_IngressPlatformSpec.() -> Unit = {}): v1_IngressPlatformSpec {
+  val instance = v1_IngressPlatformSpec()
   instance.block()
   return instance
 }
@@ -878,6 +1078,27 @@ fun newLDAPIdentityProvider(block : v1_LDAPIdentityProvider.() -> Unit = {}): v1
 }
 
 
+fun newLoadBalancer(block : v1_LoadBalancer.() -> Unit = {}): v1_LoadBalancer {
+  val instance = v1_LoadBalancer()
+  instance.block()
+  return instance
+}
+
+
+fun newMTUMigration(block : v1_MTUMigration.() -> Unit = {}): v1_MTUMigration {
+  val instance = v1_MTUMigration()
+  instance.block()
+  return instance
+}
+
+
+fun newMTUMigrationValues(block : v1_MTUMigrationValues.() -> Unit = {}): v1_MTUMigrationValues {
+  val instance = v1_MTUMigrationValues()
+  instance.block()
+  return instance
+}
+
+
 fun newMaxAgePolicy(block : v1_MaxAgePolicy.() -> Unit = {}): v1_MaxAgePolicy {
   val instance = v1_MaxAgePolicy()
   instance.block()
@@ -922,6 +1143,41 @@ fun newNetworkSpec(block : v1_NetworkSpec.() -> Unit = {}): v1_NetworkSpec {
 
 fun newNetworkStatus(block : v1_NetworkStatus.() -> Unit = {}): v1_NetworkStatus {
   val instance = v1_NetworkStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newNutanixPlatformLoadBalancer(block : v1_NutanixPlatformLoadBalancer.() -> Unit = {}): v1_NutanixPlatformLoadBalancer {
+  val instance = v1_NutanixPlatformLoadBalancer()
+  instance.block()
+  return instance
+}
+
+
+fun newNutanixPlatformSpec(block : v1_NutanixPlatformSpec.() -> Unit = {}): v1_NutanixPlatformSpec {
+  val instance = v1_NutanixPlatformSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newNutanixPlatformStatus(block : v1_NutanixPlatformStatus.() -> Unit = {}): v1_NutanixPlatformStatus {
+  val instance = v1_NutanixPlatformStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newNutanixPrismElementEndpoint(block : v1_NutanixPrismElementEndpoint.() -> Unit = {}): v1_NutanixPrismElementEndpoint {
+  val instance = v1_NutanixPrismElementEndpoint()
+  instance.block()
+  return instance
+}
+
+
+fun newNutanixPrismEndpoint(block : v1_NutanixPrismEndpoint.() -> Unit = {}): v1_NutanixPrismEndpoint {
+  val instance = v1_NutanixPrismEndpoint()
   instance.block()
   return instance
 }
@@ -990,6 +1246,13 @@ fun newOpenIDIdentityProvider(block : v1_OpenIDIdentityProvider.() -> Unit = {})
 }
 
 
+fun newOpenStackPlatformLoadBalancer(block : v1_OpenStackPlatformLoadBalancer.() -> Unit = {}): v1_OpenStackPlatformLoadBalancer {
+  val instance = v1_OpenStackPlatformLoadBalancer()
+  instance.block()
+  return instance
+}
+
+
 fun newOpenStackPlatformSpec(block : v1_OpenStackPlatformSpec.() -> Unit = {}): v1_OpenStackPlatformSpec {
   val instance = v1_OpenStackPlatformSpec()
   instance.block()
@@ -1034,6 +1297,13 @@ fun newOperatorHubSpec(block : v1_OperatorHubSpec.() -> Unit = {}): v1_OperatorH
 
 fun newOperatorHubStatus(block : v1_OperatorHubStatus.() -> Unit = {}): v1_OperatorHubStatus {
   val instance = v1_OperatorHubStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newOvirtPlatformLoadBalancer(block : v1_OvirtPlatformLoadBalancer.() -> Unit = {}): v1_OvirtPlatformLoadBalancer {
+  val instance = v1_OvirtPlatformLoadBalancer()
   instance.block()
   return instance
 }
@@ -1270,6 +1540,34 @@ fun newUpdateHistory(block : v1_UpdateHistory.() -> Unit = {}): v1_UpdateHistory
 }
 
 
+fun newVSpherePlatformFailureDomainSpec(block : v1_VSpherePlatformFailureDomainSpec.() -> Unit = {}): v1_VSpherePlatformFailureDomainSpec {
+  val instance = v1_VSpherePlatformFailureDomainSpec()
+  instance.block()
+  return instance
+}
+
+
+fun newVSpherePlatformLoadBalancer(block : v1_VSpherePlatformLoadBalancer.() -> Unit = {}): v1_VSpherePlatformLoadBalancer {
+  val instance = v1_VSpherePlatformLoadBalancer()
+  instance.block()
+  return instance
+}
+
+
+fun newVSpherePlatformNodeNetworking(block : v1_VSpherePlatformNodeNetworking.() -> Unit = {}): v1_VSpherePlatformNodeNetworking {
+  val instance = v1_VSpherePlatformNodeNetworking()
+  instance.block()
+  return instance
+}
+
+
+fun newVSpherePlatformNodeNetworkingSpec(block : v1_VSpherePlatformNodeNetworkingSpec.() -> Unit = {}): v1_VSpherePlatformNodeNetworkingSpec {
+  val instance = v1_VSpherePlatformNodeNetworkingSpec()
+  instance.block()
+  return instance
+}
+
+
 fun newVSpherePlatformSpec(block : v1_VSpherePlatformSpec.() -> Unit = {}): v1_VSpherePlatformSpec {
   val instance = v1_VSpherePlatformSpec()
   instance.block()
@@ -1279,6 +1577,20 @@ fun newVSpherePlatformSpec(block : v1_VSpherePlatformSpec.() -> Unit = {}): v1_V
 
 fun newVSpherePlatformStatus(block : v1_VSpherePlatformStatus.() -> Unit = {}): v1_VSpherePlatformStatus {
   val instance = v1_VSpherePlatformStatus()
+  instance.block()
+  return instance
+}
+
+
+fun newVSpherePlatformTopology(block : v1_VSpherePlatformTopology.() -> Unit = {}): v1_VSpherePlatformTopology {
+  val instance = v1_VSpherePlatformTopology()
+  instance.block()
+  return instance
+}
+
+
+fun newVSpherePlatformVCenterSpec(block : v1_VSpherePlatformVCenterSpec.() -> Unit = {}): v1_VSpherePlatformVCenterSpec {
+  val instance = v1_VSpherePlatformVCenterSpec()
   instance.block()
   return instance
 }

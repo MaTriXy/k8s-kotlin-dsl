@@ -27,6 +27,7 @@ import io.fabric8.openshift.api.model.PodSecurityPolicySelfSubjectReview as mode
 import io.fabric8.openshift.api.model.PodSecurityPolicySubjectReview as model_PodSecurityPolicySubjectReview
 import io.fabric8.openshift.api.model.PodSecurityPolicySubjectReviewStatus as model_PodSecurityPolicySubjectReviewStatus
 import io.fabric8.openshift.api.model.Project as model_Project
+import io.fabric8.openshift.api.model.ProjectHelmChartRepository as model_ProjectHelmChartRepository
 import io.fabric8.openshift.api.model.ProjectStatus as model_ProjectStatus
 import io.fabric8.openshift.api.model.RepositoryImportStatus as model_RepositoryImportStatus
 import io.fabric8.openshift.api.model.ResourceQuotaStatusByNamespace as model_ResourceQuotaStatusByNamespace
@@ -159,6 +160,15 @@ fun  model_PodSecurityPolicySubjectReview.`status`(block: model_PodSecurityPolic
 fun  model_Project.`status`(block: model_ProjectStatus.() -> Unit = {}) {
   if(this.`status` == null) {
     this.`status` = model_ProjectStatus()
+  }
+
+  this.`status`.block()
+}
+
+
+fun  model_ProjectHelmChartRepository.`status`(block: model_HelmChartRepositoryStatus.() -> Unit = {}) {
+  if(this.`status` == null) {
+    this.`status` = model_HelmChartRepositoryStatus()
   }
 
   this.`status`.block()

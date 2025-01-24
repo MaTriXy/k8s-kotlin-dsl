@@ -45,6 +45,7 @@ import io.fabric8.openshift.api.model.ClusterRoleList as model_ClusterRoleList
 import io.fabric8.openshift.api.model.ClusterRoleScopeRestriction as model_ClusterRoleScopeRestriction
 import io.fabric8.openshift.api.model.ConfigMapBuildSource as model_ConfigMapBuildSource
 import io.fabric8.openshift.api.model.ConnectionConfig as model_ConnectionConfig
+import io.fabric8.openshift.api.model.ConnectionConfigNamespaceScoped as model_ConnectionConfigNamespaceScoped
 import io.fabric8.openshift.api.model.CustomBuildStrategy as model_CustomBuildStrategy
 import io.fabric8.openshift.api.model.CustomDeploymentStrategyParams as model_CustomDeploymentStrategyParams
 import io.fabric8.openshift.api.model.DeploymentCause as model_DeploymentCause
@@ -52,6 +53,8 @@ import io.fabric8.openshift.api.model.DeploymentCauseImageTrigger as model_Deplo
 import io.fabric8.openshift.api.model.DeploymentCondition as model_DeploymentCondition
 import io.fabric8.openshift.api.model.DeploymentConfig as model_DeploymentConfig
 import io.fabric8.openshift.api.model.DeploymentConfigList as model_DeploymentConfigList
+import io.fabric8.openshift.api.model.DeploymentConfigRollback as model_DeploymentConfigRollback
+import io.fabric8.openshift.api.model.DeploymentConfigRollbackSpec as model_DeploymentConfigRollbackSpec
 import io.fabric8.openshift.api.model.DeploymentConfigSpec as model_DeploymentConfigSpec
 import io.fabric8.openshift.api.model.DeploymentConfigStatus as model_DeploymentConfigStatus
 import io.fabric8.openshift.api.model.DeploymentDetails as model_DeploymentDetails
@@ -94,6 +97,7 @@ import io.fabric8.openshift.api.model.ImageLabel as model_ImageLabel
 import io.fabric8.openshift.api.model.ImageLayer as model_ImageLayer
 import io.fabric8.openshift.api.model.ImageList as model_ImageList
 import io.fabric8.openshift.api.model.ImageLookupPolicy as model_ImageLookupPolicy
+import io.fabric8.openshift.api.model.ImageManifest as model_ImageManifest
 import io.fabric8.openshift.api.model.ImageSignature as model_ImageSignature
 import io.fabric8.openshift.api.model.ImageSource as model_ImageSource
 import io.fabric8.openshift.api.model.ImageSourcePath as model_ImageSourcePath
@@ -137,6 +141,9 @@ import io.fabric8.openshift.api.model.PodSecurityPolicySubjectReviewSpec as mode
 import io.fabric8.openshift.api.model.PodSecurityPolicySubjectReviewStatus as model_PodSecurityPolicySubjectReviewStatus
 import io.fabric8.openshift.api.model.PolicyRule as model_PolicyRule
 import io.fabric8.openshift.api.model.Project as model_Project
+import io.fabric8.openshift.api.model.ProjectHelmChartRepository as model_ProjectHelmChartRepository
+import io.fabric8.openshift.api.model.ProjectHelmChartRepositoryList as model_ProjectHelmChartRepositoryList
+import io.fabric8.openshift.api.model.ProjectHelmChartRepositorySpec as model_ProjectHelmChartRepositorySpec
 import io.fabric8.openshift.api.model.ProjectList as model_ProjectList
 import io.fabric8.openshift.api.model.ProjectRequest as model_ProjectRequest
 import io.fabric8.openshift.api.model.ProjectSpec as model_ProjectSpec
@@ -526,6 +533,13 @@ fun newConnectionConfig(block : model_ConnectionConfig.() -> Unit = {}): model_C
 }
 
 
+fun newConnectionConfigNamespaceScoped(block : model_ConnectionConfigNamespaceScoped.() -> Unit = {}): model_ConnectionConfigNamespaceScoped {
+  val instance = model_ConnectionConfigNamespaceScoped()
+  instance.block()
+  return instance
+}
+
+
 fun newCustomBuildStrategy(block : model_CustomBuildStrategy.() -> Unit = {}): model_CustomBuildStrategy {
   val instance = model_CustomBuildStrategy()
   instance.block()
@@ -570,6 +584,20 @@ fun newDeploymentConfig(block : model_DeploymentConfig.() -> Unit = {}): model_D
 
 fun newDeploymentConfigList(block : model_DeploymentConfigList.() -> Unit = {}): model_DeploymentConfigList {
   val instance = model_DeploymentConfigList()
+  instance.block()
+  return instance
+}
+
+
+fun newDeploymentConfigRollback(block : model_DeploymentConfigRollback.() -> Unit = {}): model_DeploymentConfigRollback {
+  val instance = model_DeploymentConfigRollback()
+  instance.block()
+  return instance
+}
+
+
+fun newDeploymentConfigRollbackSpec(block : model_DeploymentConfigRollbackSpec.() -> Unit = {}): model_DeploymentConfigRollbackSpec {
+  val instance = model_DeploymentConfigRollbackSpec()
   instance.block()
   return instance
 }
@@ -864,6 +892,13 @@ fun newImageList(block : model_ImageList.() -> Unit = {}): model_ImageList {
 
 fun newImageLookupPolicy(block : model_ImageLookupPolicy.() -> Unit = {}): model_ImageLookupPolicy {
   val instance = model_ImageLookupPolicy()
+  instance.block()
+  return instance
+}
+
+
+fun newImageManifest(block : model_ImageManifest.() -> Unit = {}): model_ImageManifest {
+  val instance = model_ImageManifest()
   instance.block()
   return instance
 }
@@ -1165,6 +1200,27 @@ fun newPolicyRule(block : model_PolicyRule.() -> Unit = {}): model_PolicyRule {
 
 fun newProject(block : model_Project.() -> Unit = {}): model_Project {
   val instance = model_Project()
+  instance.block()
+  return instance
+}
+
+
+fun newProjectHelmChartRepository(block : model_ProjectHelmChartRepository.() -> Unit = {}): model_ProjectHelmChartRepository {
+  val instance = model_ProjectHelmChartRepository()
+  instance.block()
+  return instance
+}
+
+
+fun newProjectHelmChartRepositoryList(block : model_ProjectHelmChartRepositoryList.() -> Unit = {}): model_ProjectHelmChartRepositoryList {
+  val instance = model_ProjectHelmChartRepositoryList()
+  instance.block()
+  return instance
+}
+
+
+fun newProjectHelmChartRepositorySpec(block : model_ProjectHelmChartRepositorySpec.() -> Unit = {}): model_ProjectHelmChartRepositorySpec {
+  val instance = model_ProjectHelmChartRepositorySpec()
   instance.block()
   return instance
 }

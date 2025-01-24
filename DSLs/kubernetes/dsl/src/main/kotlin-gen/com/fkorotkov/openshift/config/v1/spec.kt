@@ -20,7 +20,11 @@ import io.fabric8.openshift.api.model.config.v1.FeatureGateSpec as v1_FeatureGat
 import io.fabric8.openshift.api.model.config.v1.Image as v1_Image
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicy as v1_ImageContentPolicy
 import io.fabric8.openshift.api.model.config.v1.ImageContentPolicySpec as v1_ImageContentPolicySpec
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSet as v1_ImageDigestMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageDigestMirrorSetSpec as v1_ImageDigestMirrorSetSpec
 import io.fabric8.openshift.api.model.config.v1.ImageSpec as v1_ImageSpec
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSet as v1_ImageTagMirrorSet
+import io.fabric8.openshift.api.model.config.v1.ImageTagMirrorSetSpec as v1_ImageTagMirrorSetSpec
 import io.fabric8.openshift.api.model.config.v1.Infrastructure as v1_Infrastructure
 import io.fabric8.openshift.api.model.config.v1.InfrastructureSpec as v1_InfrastructureSpec
 import io.fabric8.openshift.api.model.config.v1.Ingress as v1_Ingress
@@ -123,6 +127,24 @@ fun  v1_Image.`spec`(block: v1_ImageSpec.() -> Unit = {}) {
 fun  v1_ImageContentPolicy.`spec`(block: v1_ImageContentPolicySpec.() -> Unit = {}) {
   if(this.`spec` == null) {
     this.`spec` = v1_ImageContentPolicySpec()
+  }
+
+  this.`spec`.block()
+}
+
+
+fun  v1_ImageDigestMirrorSet.`spec`(block: v1_ImageDigestMirrorSetSpec.() -> Unit = {}) {
+  if(this.`spec` == null) {
+    this.`spec` = v1_ImageDigestMirrorSetSpec()
+  }
+
+  this.`spec`.block()
+}
+
+
+fun  v1_ImageTagMirrorSet.`spec`(block: v1_ImageTagMirrorSetSpec.() -> Unit = {}) {
+  if(this.`spec` == null) {
+    this.`spec` = v1_ImageTagMirrorSetSpec()
   }
 
   this.`spec`.block()
