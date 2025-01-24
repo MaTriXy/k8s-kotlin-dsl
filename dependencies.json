@@ -28,7 +28,7 @@
     {
       "group": "io.fabric8",
       "name": "kubernetes-client",
-      "version": "6.13.4"
+      "version": "7.0.1"
     },
     {
       "group": "io.fabric8",
@@ -53,7 +53,7 @@
     {
       "group": "org.jetbrains.kotlin",
       "name": "kotlin-annotation-processing",
-      "version": "1.2.0-beta-31"
+      "version": "1.8.0"
     },
     {
       "group": "org.jetbrains.kotlin",
