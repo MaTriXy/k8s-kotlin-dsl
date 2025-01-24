@@ -11,8 +11,6 @@ import io.fabric8.openshift.api.model.BuildSpec as model_BuildSpec
 import io.fabric8.openshift.api.model.ClusterResourceQuota as model_ClusterResourceQuota
 import io.fabric8.openshift.api.model.ClusterResourceQuotaSpec as model_ClusterResourceQuotaSpec
 import io.fabric8.openshift.api.model.DeploymentConfig as model_DeploymentConfig
-import io.fabric8.openshift.api.model.DeploymentConfigRollback as model_DeploymentConfigRollback
-import io.fabric8.openshift.api.model.DeploymentConfigRollbackSpec as model_DeploymentConfigRollbackSpec
 import io.fabric8.openshift.api.model.DeploymentConfigSpec as model_DeploymentConfigSpec
 import io.fabric8.openshift.api.model.EgressNetworkPolicy as model_EgressNetworkPolicy
 import io.fabric8.openshift.api.model.EgressNetworkPolicySpec as model_EgressNetworkPolicySpec
@@ -94,15 +92,6 @@ fun  model_ClusterResourceQuota.`spec`(block: model_ClusterResourceQuotaSpec.() 
 fun  model_DeploymentConfig.`spec`(block: model_DeploymentConfigSpec.() -> Unit = {}) {
   if(this.`spec` == null) {
     this.`spec` = model_DeploymentConfigSpec()
-  }
-
-  this.`spec`.block()
-}
-
-
-fun  model_DeploymentConfigRollback.`spec`(block: model_DeploymentConfigRollbackSpec.() -> Unit = {}) {
-  if(this.`spec` == null) {
-    this.`spec` = model_DeploymentConfigRollbackSpec()
   }
 
   this.`spec`.block()

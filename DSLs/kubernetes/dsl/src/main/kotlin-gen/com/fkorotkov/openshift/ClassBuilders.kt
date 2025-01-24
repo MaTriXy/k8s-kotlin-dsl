@@ -53,8 +53,6 @@ import io.fabric8.openshift.api.model.DeploymentCauseImageTrigger as model_Deplo
 import io.fabric8.openshift.api.model.DeploymentCondition as model_DeploymentCondition
 import io.fabric8.openshift.api.model.DeploymentConfig as model_DeploymentConfig
 import io.fabric8.openshift.api.model.DeploymentConfigList as model_DeploymentConfigList
-import io.fabric8.openshift.api.model.DeploymentConfigRollback as model_DeploymentConfigRollback
-import io.fabric8.openshift.api.model.DeploymentConfigRollbackSpec as model_DeploymentConfigRollbackSpec
 import io.fabric8.openshift.api.model.DeploymentConfigSpec as model_DeploymentConfigSpec
 import io.fabric8.openshift.api.model.DeploymentConfigStatus as model_DeploymentConfigStatus
 import io.fabric8.openshift.api.model.DeploymentDetails as model_DeploymentDetails
@@ -584,20 +582,6 @@ fun newDeploymentConfig(block : model_DeploymentConfig.() -> Unit = {}): model_D
 
 fun newDeploymentConfigList(block : model_DeploymentConfigList.() -> Unit = {}): model_DeploymentConfigList {
   val instance = model_DeploymentConfigList()
-  instance.block()
-  return instance
-}
-
-
-fun newDeploymentConfigRollback(block : model_DeploymentConfigRollback.() -> Unit = {}): model_DeploymentConfigRollback {
-  val instance = model_DeploymentConfigRollback()
-  instance.block()
-  return instance
-}
-
-
-fun newDeploymentConfigRollbackSpec(block : model_DeploymentConfigRollbackSpec.() -> Unit = {}): model_DeploymentConfigRollbackSpec {
-  val instance = model_DeploymentConfigRollbackSpec()
   instance.block()
   return instance
 }
